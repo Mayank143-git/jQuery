@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="one.js"></script>
+    <style>
+        .box
+        {
+            background: red;
+            height:100px;
+            width:100px;
+            position: absolute;
+        }
+        
+    </style>
+</head>
+<body>
+    
+
+    <button>Start</button>
+
+    <div class="box"></div>
+
+    <script> 
+        $(document).ready(function(){
+          $("button").click(function(){
+            $(".box").animate({
+                left: '250px',
+                height: '200px',
+                width: '200px'
+            }, "slow");
+          });
+        });
+        </script>
+
+</body>
+</html>

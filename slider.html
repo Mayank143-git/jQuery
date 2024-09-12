@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="one.js"></script>
+</head>
+<body>
+    
+    <div id="parallax-slider-container" class="parallax-slider-container">
+        <div class="parallax-bg"></div>
+        <div>
+            <ul class="parallax-slider">
+                <li id="slide-1" class="slide"><img src="https://tse2.mm.bing.net/th?id=OIP.8zJYriRG6Cboi60OoY2xpwHaEo&pid=Api&P=0&h=220" /></li>
+                <li id="slide-2" class="slide"><img src="https://tse1.mm.bing.net/th?id=OIP.-koeFO7KK7rtvCxer5lYKQHaEK&pid=Api&P=0&h=220" /></li>
+                <li id="slide-3" class="slide"><img src="https://tse4.mm.bing.net/th?id=OIP.56-61efsCQjrPijK-x4JmAHaE7&pid=Api&P=0&h=220" /></li>
+                <li id="slide-4" class="slide"><img src="https://tse2.mm.bing.net/th?id=OIP.nklorQdjLJuloRgMo2ieYAHaEo&pid=Api&P=0&h=220" /></li>
+                <li id="slide-5" class="slide"><img src="https://tse3.mm.bing.net/th?id=OIP.XskzfIZ78kS68B2LmxifXwHaEK&pid=Api&P=0&h=220" /></li>
+                <li id="slide-6" class="slide"><img src="https://tse1.mm.bing.net/th?id=OIP.0UTMTf277vhK5qBMYPWxTAHaEK&pid=Api&P=0&h=220" /></li>
+            </ul>
+            <ul class="thumb-img-container">
+                <li id="1" class="thumb-img"><img src="https://tse2.mm.bing.net/th?id=OIP.8zJYriRG6Cboi60OoY2xpwHaEo&pid=Api&P=0&h=220" /></li>
+                <li id="2" class="thumb-img"><img src="https://tse1.mm.bing.net/th?id=OIP.-koeFO7KK7rtvCxer5lYKQHaEK&pid=Api&P=0&h=220" /></li>
+                <li id="3" class="thumb-img"><img src="https://tse4.mm.bing.net/th?id=OIP.56-61efsCQjrPijK-x4JmAHaE7&pid=Api&P=0&h=220" /></li>
+                <li id="4" class="thumb-img"><img src="https://tse2.mm.bing.net/th?id=OIP.nklorQdjLJuloRgMo2ieYAHaEo&pid=Api&P=0&h=220" /></li>
+                <li id="5" class="thumb-img"><img src="https://tse3.mm.bing.net/th?id=OIP.XskzfIZ78kS68B2LmxifXwHaEK&pid=Api&P=0&h=220" /></li>
+                <li id="6" class="thumb-img"><img src="https://tse1.mm.bing.net/th?id=OIP.0UTMTf277vhK5qBMYPWxTAHaEK&pid=Api&P=0&h=220" /></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+                var sliderIndex;
+                initSlider();	
+                $(".thumb-img").on("click",function(){
+                    sliderIndex = $(this).attr("id");
+                    runParallax(sliderIndex);
+                });					
+        });
+        
+        function runParallax(sliderIndex) {				
+            var windowWidth = $(window).width();
+            var slideWidth = $(".slide").width();
+            var slideLeft = (windowWidth/2)-(slideWidth/2);
+            var sliderImageCount = parseInt($(".slide").length); 
+            
+            if(sliderIndex>0) {
+                $(".parallax-bg").css("width",sliderImageCount*windowWidth);
+                $( ".parallax-bg" ).animate({
+                    left: "-"+parseInt((sliderIndex-1)*slideWidth)
+                  }, 1500 );
+                
+                for(i=1,j=sliderIndex-1;(i<=sliderIndex&&j>=1);i++,j--) {
+                    $("#slide-"+i).animate({left:"-"+parseInt(j*windowWidth)}, 1500);
+                }
+                $("#slide-"+sliderIndex).animate({left:slideLeft}, 1500);
+                for(i=++sliderIndex,counter=1;i<=sliderImageCount;i++,counter++){
+                    $("#slide-"+i).animate({left:parseInt(counter*windowWidth)}, 1500);
+                }
+            }
+        }
+        
+        function initSlider() {
+            var windowWidth = $(window).width();
+            var slideWidth = $(".slide").width();
+            var slideLeft = (windowWidth/2)-(slideWidth/2);
+            var sliderImageCount = parseInt($(".slide").length); 
+            for(i=1;i<=sliderImageCount;i++) {
+                $("#slide-"+i).css({left:(i*windowWidth)});
+            }
+            $("#slide-1").css("left",slideLeft+"px");
+        }
+    </script>
+</body>
+</html>

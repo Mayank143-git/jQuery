@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="one.js"></script>
+</head>
+<body>
+
+    
+     <p id="ravi">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem inventore dolores omnis. Possimus magnam id minima at, placeat nihil explicabo dolorum iure voluptatem consequatur laudantium soluta? Veritatis dolor doloremque molestias.
+     </p>
+
+     <button class="one">hide</button>
+     <button class="two">show</button>
+     
+
+     <script>
+
+$("#ravi").css("background-color","yellow");
+
+        $(document).ready(function(){
+         
+         $(".one").click(function(){
+
+            $("#ravi").hide(1000);
+
+            $("#ravi").css("background-color","yellow");
+
+         });
+
+         $(".two").click(function(){
+
+            $("#ravi").show(1000);
+                       
+            $("#ravi").css("background-color","red");
+
+         });
+
+        });
+
+     </script>
+     
+</body>
+</html>
